@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil profesional - Jhojan Millingalli</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top left, #08112a, #02040b 45%),
+                  linear-gradient(180deg, rgba(3, 10, 21, 0.95), #02040b 100%);
+      color: #f0f4ff;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 15%, rgba(90, 160, 255, 0.14), transparent 180px),
+                        radial-gradient(circle at 80% 10%, rgba(165, 90, 255, 0.12), transparent 160px),
+                        linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      opacity: 0.95;
+      z-index: -1;
+    }
+
+    .page-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      color: #d7e5ff;
+    }
+
+    .logo-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #4f8cff, #9f68ff);
+      box-shadow: 0 20px 45px rgba(79, 140, 255, 0.22);
+    }
+
+    .logo-mark span {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #04122d;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .logo-text strong {
+      font-size: 1rem;
+      letter-spacing: 0.8px;
+    }
+
+    .logo-text small {
+      color: #94a8d1;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      padding: 32px;
+      border-radius: 36px;
+      border: 1px solrgin: 0;
+      font-size: clamp(2.5rem, 5vw, 4.1rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      color: #eef4ff;
+    }
+
+    .hero-left p {
+      margin: 0;
+      color: #c6d3ec;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .hero-left .highlight {
+      color: #8cc3ff;
+      font-weight: 700;
+    }
+
+    .hero-left .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 18px;
+      text-decoration: none;
+      background: linear-gradient(135deg, #4f8cff 0%, #8f5bff 100%);
+      color: #ffffff;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 35px rgba(79, 140, 255, 0.22);
+    }
+
+    .tech-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(12, 22, 44, 0.96), rgba(14, 26, 52, 0.98));
+      border: 1px solid rgba(255,255,255,0.12);
+      min-height: 560px;
+      overflow: hidden;
+    }
+
+    .device-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    .device-panel a,
+    .device-button {
+      flex: 1 1 120px;
+      min-width: 115px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      text-align: center;
+      color: #e8f1ff;
+      font-weight: 700;
+      background: rgba(28, 49, 86, 0.9);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .device-panel a:hover,
+    .device-button:hover {
+      transform: translateY(-2px);
+      background: rgba(52, 83, 156, 0.16);
+      border-color: rgba(111, 167, 255, 0.32);
+    }
+
+    .screen {
+      display: grid;
+      gap: 22px;
+      padding: 24px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(10, 18, 34, 0.96), rgba(16, 30, 54, 0.98));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 0 40px rgba(70, 128, 240, 0.08);
+    }
+
+    .profile-frame {
+      position: relative;
+      min-height: 380px;
+      border-radius: 32px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a1d38 0%, #162b4f 100%);
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .profile-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 22% 26%, rgba(92, 167, 255, 0.16), transparent 24%),
+                  radial-gradient(circle at 82% 12%, rgba(159, 98, 255, 0.14), transparent 18%);
+      pointer-events: none;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .profile-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(5, 11, 24, 0.86);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #edf4ff;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-card {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 30px;
+      background: rgba(8, 16, 32, 0.94);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #d8e3f9;
+    }
+
+    .info-card h2 {
+      margin: 0;
+      font-size: 1.9rem;
+      color: #f7faff;
+    }
+
+    .info-card p {
+      margin: 0;
+      line-height: 1.8;
+      color: #bfcde8;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-block {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(14, 26, 50, 0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .info-block h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      color: #e7f3ff;
+    }
+
+    .info-block p {
+      margin: 0;
+      line-height: 1.7;
+      color: #b8c8e6;
+    }
+
+    .device-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 14px 22px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #5b89ff, #a15aff);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .device-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(90, 137, 255, 0.22);
+    }
+
+    footer {
+      margin-top: 8px;
+      padding: 18px 22px;
+      border-radius: 28px;
+      background: rgba(4, 10, 20, 0.84);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #8fa9cf;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page-container {
+        padding: 20px 16px;
+      }
+
+      .device-panel {
+        flex-direction: column;
+      }
+
+      .device-panel a,
+      .device-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <div class="logo">
+        <div class="logo-mark"><span>J</span></div>
+        <div class="logo-text">
+          <strong>Jhojan Coding Lab</strong>
+          <small>Creando experiencias tecnológicas con estilo</small>
+        </div>
+      </div>
+      <a class="action-button" href="#detalles">Conóceme mejor</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Un perfil profesional para un joven programador</h1>
+        <p>Este espacio presenta mi identidad como desarrollador: una visión futurista, un enfoque creativo y una pasión por la programación.</p>
+        <p class="highlight">Juegos, páginas web y proyectos tecnológicos con diseño moderno y energía joven.</p>
+
+        <div class="hero-actions">
+          <a class="action-button" href="#detalles">Información</a>
+          <a class="action-button" href="#equipo">Aparato</a>
+        </div>
+      </div>
+
+      <div class="tech-card">
+        <div class="device-panel">
+          <div class="device-button">Inicio</div>
+          <a href="#unidad1" class="device-button">UNIDAD 1</a>
+          <a href="#unidad2" class="device-button">UNIDAD 2</a>
+          <a href="#unidad3" class="device-button">UNIDAD 3</a>
+        </div>
+
+        <div class="screen">
+          <div class="profile-frame">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Joven programador usando tecnología" />
+            <div class="profile-label">Perfil de programador</div>
+          </div>
+
+          <div class="info-card">
+            <h2>Presentación rápida</h2>
+            <p>Hola, soy <strong>Jhojan Millingalli</strong>, un entusiasta de la tecnología y los videojuegos. Me motiva crear experiencias digitales con un toque futurista.</p>
+            <p>Me apasiona desarrollar proyectos como páginas web, juegos y contenido multimedia que comunique creatividad y profesionalismo.</p>
+            <a class="device-link" href="#equipo">Ver el aparato interactivo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="detalles" class="info-card">
+      <h2>Información y hobbies</h2>
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>Sobre mí</h3>
+          <p>¡HOLA ME LLAMO JHOJAN MILLINGALLI! Soy un chico curioso y creativo. Disfruto explorar nuevas ideas y construir proyectos con propósito.</p>
+        </div>
+        <div class="info-block">
+          <h3>Pasión por la tecnología</h3>
+          <p>La tecnología es un mundo maravilloso donde las ideas fluyen sin límites. Me encanta aprender, innovar y aplicar conocimientos para crear herramientas útiles.</p>
+        </div>
+        <div class="info-block">
+          <h3>Amor por los videojuegos</h3>
+          <p>Los videojuegos son una forma de divertirse, relajarse y descubrir mundos distintos. Jugar me inspira a entender la experiencia de usuario y la narrativa interactiva.</p>
+        </div>
+        <div class="info-block">
+          <h3>Creatividad constante</h3>
+          <p>Me gusta combinar diseño, código y contenido para inventar páginas web, juegos, imágenes y muchas otras ideas con estilo moderno.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="equipo" class="info-card">
+      <h2>Aparato interactivo</h2>
+      <p>Imagina un panel de control con botones de navegación y un monitor que muestra el perfil de un programador. Este aparato representa mi enfoque técnico y mi estética futurista.</p>
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>Botón Inicio</h3>
+          <p>La base de todo proyecto: un punto de partida sólido con interés en el aprendizaje continuo.</p>
+        </div>
+        <div class="info-block">
+          <h3>UNIDAD 1 / 2 / 3</h3>
+          <p>Secciones que organizan ideas, recursos y actividades para avanzar paso a paso en el mundo del desarrollo.</p>
+        </div>
+      </div>
+      <a class="device-link" href="#detalles">Volver a mis hobbies</a>
+    </section>
+
+    <footer>
+      Página creada para presentar un perfil profesional, con estilo moderno, estructura clara y contenido inspirado en la pasión por la programación.</footer>
+  </div>
+</body>
+</html>
